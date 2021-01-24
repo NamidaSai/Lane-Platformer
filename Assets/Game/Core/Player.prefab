@@ -5321,9 +5321,10 @@ GameObject:
   - component: {fileID: 972904911627911697}
   - component: {fileID: 972904911627911696}
   - component: {fileID: 972904911627911703}
+  - component: {fileID: 1915981944}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5486,6 +5487,20 @@ MonoBehaviour:
   floatHeight: 0.5
   liftForce: 50
   damping: 20
+--- !u!114 &1915981944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972904911627911691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4396d0d5767d64b9807dcb61693580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burdenFactor: 10
+  numberOfBurdens: 0
 --- !u!1 &972904912010180358
 GameObject:
   m_ObjectHideFlags: 0
