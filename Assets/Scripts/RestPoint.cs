@@ -28,6 +28,12 @@ public class RestPoint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && other.GetComponent<BurdenManager>() != null)
         {
+            if (other.GetComponent<BurdenManager>().GetBurdenNumber() == 0)
+            {
+                GetComponent<Animator>().SetBool("isResting", false);
+                return;
+            }
+
             if (restCountdown >= countdownDelay)
             {
                 other.GetComponent<BurdenManager>().RemoveAllBurdens();
@@ -51,9 +57,11 @@ public class RestPoint : MonoBehaviour
 
     private void CleanseFX()
     {
+        GetComponent<Animator>().SetTrigger("Cleanse");
     }
 
     private void RestFX()
     {
+        GetComponent<Animator>().SetBool("isResting", true);
     }
 }

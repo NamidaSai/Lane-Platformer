@@ -19,6 +19,11 @@ public class BurdenManager : MonoBehaviour
         startingParticleScale = particles.transform.localScale.x;
     }
 
+    public float GetBurdenNumber()
+    {
+        return numberOfBurdens;
+    }
+
     public void AddBurden()
     {
         numberOfBurdens += 1;
