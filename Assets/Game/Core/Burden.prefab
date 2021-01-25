@@ -47,9 +47,9 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.6
   m_Color: {r: 0.38483447, g: 0.30882874, b: 0.4716981, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000d1c1b7498f27c9750944aa39
+  m_ApplyToSortingLayers: 8f27c9750944aa39
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bcb3c20cfa17db4992ec4b81d017d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fxDelay: 1
+  fxDelay: 0.4
 --- !u!95 &6439305342330358527
 Animator:
   serializedVersion: 3
