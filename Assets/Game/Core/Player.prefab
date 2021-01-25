@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4396d0d5767d64b9807dcb61693580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burdenFactor: 10
+  burdenFactor: 8
   numberOfBurdens: 0
 --- !u!1 &972904912010180358
 GameObject:

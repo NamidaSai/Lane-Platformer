@@ -76,6 +76,7 @@ public class PlayerMover : MonoBehaviour
     {
         bool playerHasDownwardSpeed = (myRigidbody.velocity.y < Mathf.Epsilon);
         bool playerIsTouchingGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        animator.SetBool("isFalling", !playerIsTouchingGround);
 
         if (!playerHasDownwardSpeed) { return; }
 
@@ -93,7 +94,5 @@ public class PlayerMover : MonoBehaviour
 
             myRigidbody.AddForce(Vector3.up * force);
         }
-
-        animator.SetBool("isFalling", !playerIsTouchingGround);
     }
 }
