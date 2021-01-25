@@ -25,7 +25,6 @@ public class PlayerMover : MonoBehaviour
     private void FixedUpdate()
     {
         Fall();
-        FlipSprite();
     }
 
     public void Move(Vector2 moveThrottle)
@@ -46,14 +45,16 @@ public class PlayerMover : MonoBehaviour
 
         Vector2 moveForce = new Vector2(moveSpeedX, 0f);
         myRigidbody.velocity += moveForce;
+        
+        FlipSprite(moveThrottle);
     }
 
-    private void FlipSprite()
+    private void FlipSprite(Vector2 moveThrottle)
     {
-        bool playerHasHorizontalSpeed = (Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon);
+        bool playerHasHorizontalSpeed = (Mathf.Abs(moveThrottle.x) > Mathf.Epsilon);
         if (playerHasHorizontalSpeed)
         {
-            transform.localScale = new Vector3(Mathf.Sign(myRigidbody.velocity.x), 1f, 1f);
+            transform.localScale = new Vector3(Mathf.Sign(moveThrottle.x), transform.localScale.y, transform.localScale.z);
         }
     }
 
