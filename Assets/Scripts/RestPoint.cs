@@ -5,6 +5,7 @@ using UnityEngine;
 public class RestPoint : MonoBehaviour
 {
     [SerializeField] float countdownDelay = 5f;
+    [SerializeField] float cleanseFXDuration = 1f;
     float restCountdown = 0f;
     bool playerOnRestPoint = false;
 
@@ -36,8 +37,7 @@ public class RestPoint : MonoBehaviour
 
             if (restCountdown >= countdownDelay)
             {
-                other.GetComponent<BurdenManager>().RemoveAllBurdens();
-                CleanseFX();
+                StartCoroutine(CleanseFX(other.gameObject));
             }
             else
             {
@@ -52,12 +52,16 @@ public class RestPoint : MonoBehaviour
         {
             restCountdown = 0f;
             playerOnRestPoint = false;
+            GetComponent<Animator>().SetBool("isResting", false);
+            GetComponent<Animator>().ResetTrigger("Cleanse");
         }
     }
 
-    private void CleanseFX()
+    private IEnumerator CleanseFX(GameObject other)
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
+        yield return new WaitForSeconds(cleanseFXDuration);
+        other.GetComponent<BurdenManager>().RemoveAllBurdens();
     }
 
     private void RestFX()

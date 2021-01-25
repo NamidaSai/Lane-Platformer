@@ -132,9 +132,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1.6472988}
-      - {x: -1.1198683, y: -0.26792404}
-      - {x: 1.0942217, y: -0.26021934}
+    - - {x: 0, y: 1.2597885}
+      - {x: -0.9147692, y: -0.74661326}
+      - {x: 0.8940735, y: -0.77788067}
 --- !u!114 &9010133250108242896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownDelay: 3
+  cleanseFXDuration: 0.5
 --- !u!95 &1057459614
 Animator:
   serializedVersion: 3
@@ -217,7 +218,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: acbe96c261ccd5d4583692320d4443a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

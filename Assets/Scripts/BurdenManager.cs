@@ -17,6 +17,7 @@ public class BurdenManager : MonoBehaviour
         startingMass = GetComponent<Rigidbody2D>().mass;
         particles = GetComponentInChildren<ParticleSystem>();
         startingParticleScale = particles.transform.localScale.x;
+        particles.transform.localScale = new Vector3(0,0,0);
     }
 
     public float GetBurdenNumber()
@@ -33,7 +34,8 @@ public class BurdenManager : MonoBehaviour
     public void RemoveAllBurdens()
     {
         numberOfBurdens = 0;
-        SetBurdenedParameters();
+        particles.transform.localScale = new Vector3(0,0,0);
+        GetComponent<Rigidbody2D>().mass = startingMass;
     }
 
     private void SetBurdenedParameters()
