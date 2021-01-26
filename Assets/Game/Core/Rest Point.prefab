@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1785700367ccd4a8cc185012bddacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownDelay: 2
+  countdownDelay: 2.5
   cleanseFXDuration: 0.5
 --- !u!95 &1057459614
 Animator:

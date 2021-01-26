@@ -61,7 +61,7 @@ public class RestPoint : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
         yield return new WaitForSeconds(cleanseFXDuration);
-        other.GetComponent<BurdenManager>().RemoveAllBurdens();
+        // other.GetComponent<BurdenManager>().RemoveAllBurdens();
     }
 
     private void RestFX()

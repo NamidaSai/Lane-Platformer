@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BurdenManager : MonoBehaviour
 {
+    [SerializeField] float maxBurdens = 4f;
+    [SerializeField] float minMoveSpeedFactor = 0.75f;
     [SerializeField] float burdenFactor = 10f;
     [SerializeField] float numberOfBurdens = 0; //serialized for debugging only
+    [SerializeField] GameObject burdenPrefab = default;
 
     ParticleSystem particles;
     float startingParticleScale;
@@ -14,7 +17,6 @@ public class BurdenManager : MonoBehaviour
 
     private void Start()
     {
-        startingMass = GetComponent<Rigidbody2D>().mass;
         particles = GetComponentInChildren<ParticleSystem>();
         startingParticleScale = particles.transform.localScale.x;
         particles.transform.localScale = new Vector3(0,0,0);
@@ -31,18 +33,44 @@ public class BurdenManager : MonoBehaviour
         SetBurdenedParameters();
     }
 
-    public void RemoveAllBurdens()
+    public void DropBurden()
     {
-        numberOfBurdens = 0;
-        particles.transform.localScale = new Vector3(0,0,0);
-        GetComponent<Rigidbody2D>().mass = startingMass;
+        numberOfBurdens -= 1;
+        CreateBurdenObject();
+        SetBurdenedParameters();
+    }
+
+    public bool CanTakeBurden()
+    {
+        if (numberOfBurdens < maxBurdens)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void SetBurdenedParameters()
     {
-        GetComponent<Rigidbody2D>().mass = startingMass + (numberOfBurdens / burdenFactor);
+        float burdenedSpeed = 1f - (numberOfBurdens * (1f - minMoveSpeedFactor) / maxBurdens);
+        GetComponent<PlayerMover>().SetBurdenedSpeed(burdenedSpeed);
+        
+        if (numberOfBurdens == 0)
+        {
+            particles.transform.localScale = new Vector3(0,0,0);
+        }
+        else
+        {
+            float burdenedScale = startingParticleScale + (numberOfBurdens / burdenFactor);
+            particles.transform.localScale = new Vector3(burdenedScale, burdenedScale, 1);
+        }
+    }
 
-        float burdenedScale = startingParticleScale + (numberOfBurdens / burdenFactor);
-        particles.transform.localScale = new Vector3(burdenedScale, burdenedScale, 1);
+    private void CreateBurdenObject()
+    {
+        GameObject burden = Instantiate(burdenPrefab, transform.position, Quaternion.identity) as GameObject;
+        burden.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
     }
 }

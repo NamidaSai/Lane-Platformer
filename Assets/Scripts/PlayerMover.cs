@@ -11,6 +11,11 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float liftForce = 10f;
     [SerializeField] float damping = 1f;
 
+    [SerializeField] GameObject doubleJumpFXPrefab = default;
+    [SerializeField] float fxDelay = 1f;
+
+    private float burdenedSpeed = 1f;
+
     private Rigidbody2D myRigidbody;
     private BoxCollider2D myFeet;
     private Animator animator;
@@ -35,12 +40,12 @@ public class PlayerMover : MonoBehaviour
         if (playerIsTouchingGround)
         {
             animator.SetFloat("MoveBlend", Mathf.Abs(myRigidbody.velocity.x));
-            moveSpeedX = moveSpeed * Time.deltaTime * moveThrottle.x;
+            moveSpeedX = (moveSpeed * burdenedSpeed) * Time.deltaTime * moveThrottle.x;
         }
         else
         {
             animator.SetFloat("MoveBlend", 0);
-            moveSpeedX = flySpeed * Time.deltaTime * moveThrottle.x;
+            moveSpeedX = (flySpeed * burdenedSpeed) * Time.deltaTime * moveThrottle.x;
         }
 
         Vector2 moveForce = new Vector2(moveSpeedX, 0f);
@@ -63,20 +68,46 @@ public class PlayerMover : MonoBehaviour
     {
         bool playerIsTouchingGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
 
-        if (!playerIsTouchingGround) { return; }
+        if (!playerIsTouchingGround && !CanDoubleJump()) { return; }
 
-        float currentJumpSpeed = jumpSpeed * 100f;
+        float currentJumpSpeed = (jumpSpeed * burdenedSpeed) * 100f;
         Vector2 jumpForce = new Vector2(0f, currentJumpSpeed);
         myRigidbody.AddForce(jumpForce);
 
         animator.SetTrigger("Jump");
+        animator.SetBool("isFalling", false);
+    }
+
+    public void SetBurdenedSpeed(float value)
+    {
+        burdenedSpeed = value;
+    }
+
+    private bool CanDoubleJump()
+    {
+        if (GetComponent<BurdenManager>().GetBurdenNumber() > 0)
+        {
+            GetComponent<BurdenManager>().DropBurden();
+            DoubleJumpFX();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void DoubleJumpFX()
+    {
+        GameObject doubleJumpFX = Instantiate(doubleJumpFXPrefab, transform.position, Quaternion.identity) as GameObject;
+        Destroy(doubleJumpFX, fxDelay);
     }
 
     private void Fall()
     {
         bool playerHasDownwardSpeed = (myRigidbody.velocity.y < Mathf.Epsilon);
         bool playerIsTouchingGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
-        animator.SetBool("isFalling", !playerIsTouchingGround);
+        animator.SetBool("isFalling", !playerIsTouchingGround && playerHasDownwardSpeed);
 
         if (!playerHasDownwardSpeed) { return; }
 
