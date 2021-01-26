@@ -748,6 +748,8 @@ MonoBehaviour:
   floatHeight: 0.5
   liftForce: 50
   damping: 22
+  doubleJumpFXPrefab: {fileID: 8757384281795259576, guid: c6a3d4b6b5fc43c428b8d71dc3508f83, type: 3}
+  fxDelay: 0.5
 --- !u!114 &1915981944
 MonoBehaviour:
   m_ObjectHideFlags: 0

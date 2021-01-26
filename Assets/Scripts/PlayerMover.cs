@@ -99,7 +99,8 @@ public class PlayerMover : MonoBehaviour
 
     private void DoubleJumpFX()
     {
-        GameObject doubleJumpFX = Instantiate(doubleJumpFXPrefab, transform.position, Quaternion.identity) as GameObject;
+        GameObject doubleJumpFX = Instantiate(doubleJumpFXPrefab, transform.position, doubleJumpFXPrefab.transform.rotation)as GameObject;
+        doubleJumpFX.transform.parent = transform;
         Destroy(doubleJumpFX, fxDelay);
     }
 

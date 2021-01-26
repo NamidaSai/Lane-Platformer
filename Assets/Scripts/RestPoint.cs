@@ -27,7 +27,7 @@ public class RestPoint : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && other.GetComponent<BurdenManager>() != null)
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetComponent<BurdenManager>().GetBurdenNumber() == 0)
             {
@@ -48,7 +48,7 @@ public class RestPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && other.GetComponent<BurdenManager>() != null)
+        if (other.gameObject.tag == "Player")
         {
             restCountdown = 0f;
             playerOnRestPoint = false;
@@ -61,7 +61,7 @@ public class RestPoint : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
         yield return new WaitForSeconds(cleanseFXDuration);
-        // other.GetComponent<BurdenManager>().RemoveAllBurdens();
+        FindObjectOfType<SceneLoader>().LoadNextScene();
     }
 
     private void RestFX()

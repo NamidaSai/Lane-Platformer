@@ -10,7 +10,6 @@ public class SceneLoader : MonoBehaviour
     private void Awake() 
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        
     }
 
     public void LoadMenu()
@@ -21,6 +20,11 @@ public class SceneLoader : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     public void ResetScene()
