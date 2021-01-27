@@ -19,9 +19,10 @@ public class RestPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && other.GetComponent<BurdenManager>() != null)
+        if (other.gameObject.tag == "Player" && other.GetComponent<BurdenManager>().GetBurdenNumber() > 0)
         {
             playerOnRestPoint = true;
+            FindObjectOfType<Timer>().StopTimer();
         }
     }
 
