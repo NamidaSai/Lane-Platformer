@@ -14,6 +14,12 @@ public class BurdenManager : MonoBehaviour
     float startingParticleScale;
     float startingMass;
 
+    AudioManager audioManager;
+
+    private void Awake() 
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     private void Start()
     {
@@ -31,6 +37,7 @@ public class BurdenManager : MonoBehaviour
     {
         numberOfBurdens += 1;
         SetBurdenedParameters();
+        audioManager.Play("BurdenCollect");
     }
 
     public void DropBurden()
@@ -38,6 +45,7 @@ public class BurdenManager : MonoBehaviour
         numberOfBurdens -= 1;
         CreateBurdenObject();
         SetBurdenedParameters();
+        audioManager.Play("BurdenDrop");
     }
 
     public bool CanTakeBurden()

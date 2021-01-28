@@ -19,12 +19,14 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private BoxCollider2D myFeet;
     private Animator animator;
+    private AudioManager audioManager;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myFeet = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void FixedUpdate()
@@ -41,6 +43,11 @@ public class PlayerMover : MonoBehaviour
         {
             animator.SetFloat("MoveBlend", Mathf.Abs(myRigidbody.velocity.x));
             moveSpeedX = (moveSpeed * burdenedSpeed) * Time.deltaTime * moveThrottle.x;
+
+            if (moveThrottle.x != 0)
+            {
+                audioManager.Play("Footstep");
+            }
         }
         else
         {
@@ -76,6 +83,7 @@ public class PlayerMover : MonoBehaviour
 
         animator.SetTrigger("Jump");
         animator.SetBool("isFalling", false);
+        audioManager.Play("Jump");
     }
 
     public void SetBurdenedSpeed(float value)

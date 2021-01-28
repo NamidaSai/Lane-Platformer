@@ -6,6 +6,7 @@ public class RestPoint : MonoBehaviour
 {
     [SerializeField] float countdownDelay = 5f;
     [SerializeField] float cleanseFXDuration = 1f;
+    [SerializeField] string nextOSTName = null;
     float restCountdown = 0f;
     bool playerOnRestPoint = false;
 
@@ -61,6 +62,7 @@ public class RestPoint : MonoBehaviour
     private IEnumerator CleanseFX(GameObject other)
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
+        FindObjectOfType<MusicPlayer>().Play(nextOSTName);
         yield return new WaitForSeconds(cleanseFXDuration);
         FindObjectOfType<SceneLoader>().LoadNextScene();
     }
