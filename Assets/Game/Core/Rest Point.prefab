@@ -132,9 +132,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1.2597885}
-      - {x: -0.9147692, y: -0.74661326}
-      - {x: 0.8940735, y: -0.77788067}
+    - - {x: 0.018302917, y: 1.9647045}
+      - {x: -1.5554132, y: -0.73745847}
+      - {x: 1.5072594, y: -0.7412617}
 --- !u!114 &9010133250108242896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1785700367ccd4a8cc185012bddacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownDelay: 2.5
+  countdownDelay: 1.5
   cleanseFXDuration: 0.5
+  nextOSTName: 
+  isStart: 0
 --- !u!95 &1057459614
 Animator:
   serializedVersion: 3

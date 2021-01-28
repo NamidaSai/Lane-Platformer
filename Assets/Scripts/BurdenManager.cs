@@ -16,16 +16,12 @@ public class BurdenManager : MonoBehaviour
 
     AudioManager audioManager;
 
-    private void Awake() 
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
-
     private void Start()
     {
         particles = GetComponentInChildren<ParticleSystem>();
         startingParticleScale = particles.transform.localScale.x;
         particles.transform.localScale = new Vector3(0,0,0);
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public float GetBurdenNumber()

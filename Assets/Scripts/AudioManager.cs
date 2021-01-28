@@ -32,6 +32,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Play("Wind");
+    }
+
     public void Play(string soundName)
     {
         Sound sound = Array.Find(sounds, soundClip => soundClip.name == soundName);

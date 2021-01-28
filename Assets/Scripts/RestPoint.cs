@@ -7,8 +7,18 @@ public class RestPoint : MonoBehaviour
     [SerializeField] float countdownDelay = 5f;
     [SerializeField] float cleanseFXDuration = 1f;
     [SerializeField] string nextOSTName = null;
+    [SerializeField] bool isStart = false;
     float restCountdown = 0f;
     bool playerOnRestPoint = false;
+    bool isActivated = false;
+
+    private void Start() 
+    {
+        if (isStart)
+        {
+            FindObjectOfType<AudioManager>().Play("LevelStart");
+        }
+    }
 
     private void Update()
     {
@@ -24,6 +34,7 @@ public class RestPoint : MonoBehaviour
         {
             playerOnRestPoint = true;
             FindObjectOfType<Timer>().StopTimer();
+            FindObjectOfType<AudioManager>().Play("Rest");
         }
     }
 
@@ -37,9 +48,10 @@ public class RestPoint : MonoBehaviour
                 return;
             }
 
-            if (restCountdown >= countdownDelay)
+            if (restCountdown >= countdownDelay && !isActivated)
             {
                 StartCoroutine(CleanseFX(other.gameObject));
+                isActivated = true;
             }
             else
             {
@@ -63,6 +75,8 @@ public class RestPoint : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
         FindObjectOfType<MusicPlayer>().Play(nextOSTName);
+        FindObjectOfType<AudioManager>().Play("LevelEnd2");
+        FindObjectOfType<AudioManager>().Play("LevelEnd");
         yield return new WaitForSeconds(cleanseFXDuration);
         FindObjectOfType<SceneLoader>().LoadNextScene();
     }

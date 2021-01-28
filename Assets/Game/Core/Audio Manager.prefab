@@ -77,18 +77,42 @@ MonoBehaviour:
     stopOnPause: 0
     source: {fileID: 0}
   - name: LevelStart
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2d027f67547d9bb489c3f95196b41de3, type: 3}
     volume: 0.15
-    pitch: 1
-    randomPitch: 1
+    pitch: 2
+    randomPitch: 0
     loop: 0
     stopOnPause: 0
     source: {fileID: 0}
   - name: LevelEnd
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 464763e672e4fe24f93a36f82dd5f6d4, type: 3}
     volume: 0.15
+    pitch: 1.5
+    randomPitch: 0
+    loop: 0
+    stopOnPause: 0
+    source: {fileID: 0}
+  - name: Wind
+    clip: {fileID: 8300000, guid: d8b244d3089c493438457c4b9799f154, type: 3}
+    volume: 0.02
     pitch: 1
-    randomPitch: 1
+    randomPitch: 0
+    loop: 0
+    stopOnPause: 0
+    source: {fileID: 0}
+  - name: Rest
+    clip: {fileID: 8300000, guid: 525c5f67a3f7ca043ac499e4e3a1b262, type: 3}
+    volume: 0.05
+    pitch: 0.75
+    randomPitch: 0
+    loop: 0
+    stopOnPause: 0
+    source: {fileID: 0}
+  - name: LevelEnd2
+    clip: {fileID: 8300000, guid: d08bd0f57be01ea4d87ed6d52842303e, type: 3}
+    volume: 0.3
+    pitch: 2
+    randomPitch: 0
     loop: 0
     stopOnPause: 0
     source: {fileID: 0}
