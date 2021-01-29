@@ -5,19 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Z_StartMenu.unity
+    guid: d6df5b0b92a3e864cb49c581cd59f19b
+  - enabled: 1
     path: Assets/Scenes/0_Jumping.unity
     guid: d4f8167c80944f74eb4429d95bb4aa20
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/1_Running.unity
     guid: 9af2c47a216730e4eb65e597fe95d54e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/2_Carrying.unity
     guid: 809d63c0e1e6c7445af544c1f30c830a
   - enabled: 1
     path: Assets/Scenes/3_Reaching.unity
     guid: 6a6c4e6dd83c4e342ade61b6bdf986e6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/4_Lighting.unity
     guid: 276220d0fdc896b4aacb49f61382b90e
   m_configObjects: {}
