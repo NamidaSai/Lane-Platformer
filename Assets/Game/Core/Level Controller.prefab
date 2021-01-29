@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3deefb7f84b2a4941b9e7ee2e5e934e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDelay: 1
+  transitionDelay: 0.7
   fader: {fileID: 0}
 --- !u!114 &8044690894765649047
 MonoBehaviour:
@@ -294,7 +294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 4803441255394955602}
-  timerEnabled: 1
 --- !u!114 &7971751754059269390
 MonoBehaviour:
   m_ObjectHideFlags: 0

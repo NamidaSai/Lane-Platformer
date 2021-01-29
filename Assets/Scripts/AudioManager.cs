@@ -95,4 +95,12 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+    public void SetSFXVolume(float value)
+    {
+        foreach (Sound sound in sounds)
+        {
+            sound.source.volume = sound.volume * value;
+        }
+    }
 }

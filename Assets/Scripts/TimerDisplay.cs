@@ -14,7 +14,7 @@ public class TimerDisplay : MonoBehaviour
         
         if (!timerEnabled)
         {
-            this.gameObject.SetActive(false);
+            displayText.gameObject.SetActive(false);
         }
     }
 
