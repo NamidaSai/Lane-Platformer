@@ -44,6 +44,13 @@ public class BurdenManager : MonoBehaviour
         audioManager.Play("BurdenDrop");
     }
 
+    public void RemoveAllBurden()
+    {
+        numberOfBurdens = 0;
+        SetBurdenedParameters();
+        audioManager.Play("Jump");
+    }
+
     public bool CanTakeBurden()
     {
         if (numberOfBurdens < maxBurdens)

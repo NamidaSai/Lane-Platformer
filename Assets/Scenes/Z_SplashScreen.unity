@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3deefb7f84b2a4941b9e7ee2e5e934e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDelay: 1.5
+  transitionDelay: 1
   fader: {fileID: 929072029}
 --- !u!1 &712934828
 GameObject:

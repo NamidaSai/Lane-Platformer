@@ -74,6 +74,7 @@ public class RestPoint : MonoBehaviour
     private IEnumerator CleanseFX(GameObject other)
     {
         GetComponent<Animator>().SetTrigger("Cleanse");
+        other.GetComponent<Animator>().SetTrigger("Cleansed");
         FindObjectOfType<MusicPlayer>().Play(nextOSTName);
         FindObjectOfType<AudioManager>().Play("LevelEnd2");
         FindObjectOfType<AudioManager>().Play("LevelEnd");

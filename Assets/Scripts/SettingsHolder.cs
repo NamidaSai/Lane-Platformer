@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SettingsHolder : MonoBehaviour
 {
-    private TimeSpan[] levelTimes = new TimeSpan[5];
+    private TimeSpan[] levelTimes = new TimeSpan[4];
     [SerializeField] private bool timerEnabled = true;
 
     public static SettingsHolder instance;
