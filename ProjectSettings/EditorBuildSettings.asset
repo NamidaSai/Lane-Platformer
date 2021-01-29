@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Z_SplashScreen.unity
+    guid: 0aca55140666da341b3c56d20f102f56
+  - enabled: 1
     path: Assets/Scenes/Z_StartMenu.unity
     guid: d6df5b0b92a3e864cb49c581cd59f19b
   - enabled: 1
@@ -21,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/3_Reaching.unity
     guid: 6a6c4e6dd83c4e342ade61b6bdf986e6
   - enabled: 1
-    path: Assets/Scenes/4_Lighting.unity
-    guid: 276220d0fdc896b4aacb49f61382b90e
+    path: Assets/Scenes/Z_EndScreen.unity
+    guid: 3ed1155534138f547831600c27e3570b
   m_configObjects: {}

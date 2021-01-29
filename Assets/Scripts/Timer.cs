@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -21,5 +22,6 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         stopwatch.Stop();
+        FindObjectOfType<SettingsHolder>().SetTimeForLevel(SceneManager.GetActiveScene().buildIndex - 2, timeElapsed);
     }
 }

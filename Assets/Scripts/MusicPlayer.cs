@@ -72,7 +72,15 @@ public class MusicPlayer : MonoBehaviour
         currentTrack.source.loop = false;
         yield return new WaitWhile(() => currentTrack.source.isPlaying);
         nextTrack.source.Play();
-        Destroy(currentTrack.source);
+        nextTrack.source.loop = true;
         currentTrack = nextTrack;
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        foreach (Sound track in tracks)
+        {
+            track.source.volume = track.volume * value;
+        }
     }
 }

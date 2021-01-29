@@ -6,6 +6,18 @@ public class TimerDisplay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI displayText = default;
 
+    private bool timerEnabled = true;
+
+    private void Start() 
+    {
+        timerEnabled = FindObjectOfType<SettingsHolder>().isTimerEnabled(); 
+        
+        if (!timerEnabled)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         TimeSpan ts = GetComponent<Timer>().timeElapsed;

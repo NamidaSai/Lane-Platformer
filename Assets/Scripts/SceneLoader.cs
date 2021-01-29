@@ -5,31 +5,53 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] float transitionDelay = 1f;
+    [SerializeField] GameObject fader = default;
+
     int currentSceneIndex;
 
     private void Awake() 
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        fader.SetActive(true);
+    }
+
+    private IEnumerator Start() 
+    {
+        yield return new WaitForSeconds(transitionDelay);
+        if (currentSceneIndex == 0)
+        {
+            LoadNextScene();
+        }
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        StartCoroutine(LoadSceneWithTransition(1));
+        FindObjectOfType<MusicPlayer>().Play("OST_Menu");
     }
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadSceneWithTransition(2));
+        FindObjectOfType<MusicPlayer>().Play("OST_Level0");
     }
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        StartCoroutine(LoadSceneWithTransition(currentSceneIndex + 1));
+    }
+
+    private IEnumerator LoadSceneWithTransition(int targetSceneIndex)
+    {
+        fader.GetComponent<Animator>().SetTrigger("FadeOut");
+        yield return new WaitForSeconds(transitionDelay);
+        SceneManager.LoadScene(targetSceneIndex);
     }
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(currentSceneIndex);
+        StartCoroutine(LoadSceneWithTransition(currentSceneIndex));
     }
 
     public void QuitGame()
