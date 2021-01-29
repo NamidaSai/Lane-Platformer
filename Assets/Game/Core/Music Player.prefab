@@ -92,3 +92,4 @@ MonoBehaviour:
     loop: 1
     stopOnPause: 0
     source: {fileID: 0}
+  startingTrack: OST_Menu

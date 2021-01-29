@@ -7,6 +7,7 @@ using System.Collections;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField] Sound[] tracks = null;
+    [SerializeField] string startingTrack = null;
 
     public static MusicPlayer instance;
 
@@ -38,7 +39,7 @@ public class MusicPlayer : MonoBehaviour
 
     private void Start()
     {
-        Play("OST_Menu");
+        Play(startingTrack);
     }
 
     public void Play(string trackName)
